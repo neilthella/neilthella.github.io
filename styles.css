@@ -1,6 +1,7 @@
 /** AI was used in developing this website, however NO AI was used in the materials. The materials are human-made from trial and error after years of running camps and workshops. **/
 
 @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
@@ -415,6 +416,10 @@ section .section-sub {
 .tag-time {
   background: #e3f3e6;
   color: #2f546b;
+  font-family: inherit;
+  font-size: 0.82rem;
+  width: 7.75em;
+  text-align: center;
 }
 
 .tag-pptx,
@@ -718,6 +723,40 @@ footer {
 
 .curriculum-box { scroll-margin-top: 110px; }
 
+.module-list li.has-art {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  column-gap: 24px;
+  align-items: center;
+}
+
+.module-list li.has-art .module-text { grid-column: 1; grid-row: 1; }
+
+.module-art {
+  grid-column: 2;
+  grid-row: 1;
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+div.module-art {
+  aspect-ratio: 220 / 170;
+}
+
+.module-art[hidden] { display: none; }
+
+.module-art .ra-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .module-list li.has-art { grid-template-columns: minmax(0, 1fr) 96px; column-gap: 16px; }
+  .module-art { width: 96px; }
+}
+
 .module-list h3 {
   margin: 0 0 4px;
   font-size: 1.08rem;
@@ -797,3 +836,342 @@ footer {
   color: var(--text);
   box-shadow: inset 0 3px 0 var(--accent);
 }
+
+main.with-sidebar {
+  max-width: 1270px;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  column-gap: 40px;
+}
+
+.page-content [id] { scroll-margin-top: 96px; }
+
+.page-sidebar {
+  position: sticky;
+  top: 96px;
+  align-self: start;
+}
+
+.sidebar-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+
+.sidebar-title {
+  font-family: var(--hand);
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sidebar-title:hover { color: var(--accent); }
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-links a {
+  position: relative;
+  padding: 5px 8px 5px 24px;
+  font-family: var(--hand);
+  font-size: 1.3rem;
+  line-height: 1.25;
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.sidebar-links a:hover {
+  color: var(--text);
+}
+
+.sidebar-links a::before {
+  content: "\2192";
+  position: absolute;
+  left: 4px;
+  color: var(--accent);
+  font-weight: 700;
+  opacity: 0;
+}
+
+.sidebar-links a.active {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.sidebar-links a.active::before { opacity: 1; }
+
+@media (max-width: 1000px) {
+  main.with-sidebar { display: block; max-width: var(--max-width); }
+  .page-sidebar { display: none; }
+}
+
+/* ---- Robotics module illustrations (see robot-art.js) ---- */
+
+.ra-part {
+  transform: translate(var(--tx, 0), var(--ty, 0)) rotate(var(--rot, 0deg));
+  transition: transform 1.3s cubic-bezier(0.22, 0.9, 0.28, 1) var(--d, 0s);
+}
+
+.ra-assembled .ra-part { transform: translate(0, 0) rotate(0deg); }
+
+@keyframes ra-ground { to { transform: translateX(-40px); } }
+@keyframes ra-spin { to { transform: rotate(360deg); } }
+@keyframes ra-speed { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.9; } }
+
+.ra-ground { animation: ra-ground 0.8s linear infinite; }
+.ra-spin { animation: ra-spin 2.14s linear infinite; }
+.ra-speed { animation: ra-speed 0.8s ease-in-out infinite; }
+
+/* Shuttle: the robot drives 55 units forward, then back; the wheel turns
+   55 / (2 * pi * 17) * 360 = 185.4deg to match. Keep the two in sync. */
+@keyframes ra-shuttle {
+  0%, 6% { transform: translateX(0); }
+  46%, 54% { transform: translateX(55px); }
+  94%, 100% { transform: translateX(0); }
+}
+@keyframes ra-shuttle-wheel {
+  0%, 6% { transform: rotate(0deg); }
+  46%, 54% { transform: rotate(185.4deg); }
+  94%, 100% { transform: rotate(0deg); }
+}
+@keyframes ra-ping { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+
+.ra-shuttle { animation: ra-shuttle 7s ease-in-out infinite; }
+.ra-wheel-shuttle { animation: ra-shuttle-wheel 7s ease-in-out infinite; }
+.ra-ping { animation: ra-ping 1.1s ease-in-out infinite; }
+.ra-ping-2 { animation-delay: 0.18s; }
+.ra-ping-3 { animation-delay: 0.36s; }
+
+@keyframes ra-gear-cw { to { transform: rotate(360deg); } }
+@keyframes ra-gear-ccw { to { transform: rotate(-360deg); } }
+.ra-gear-cw { animation: ra-gear-cw 14s linear infinite; }
+.ra-gear-ccw { animation: ra-gear-ccw 14s linear infinite; }
+
+@keyframes ra-twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+}
+@keyframes ra-bob { to { transform: translateY(-4px); } }
+@keyframes ra-fall {
+  from { transform: translateY(-20px) rotate(0deg); }
+  to { transform: translateY(190px) rotate(300deg); }
+}
+
+.ra-twinkle { animation: ra-twinkle 1.8s ease-in-out infinite; transform-origin: 0 0; }
+.ra-bob { animation: ra-bob 2.2s ease-in-out infinite alternate; }
+.ra-confetti { animation: ra-fall var(--fd, 5s) linear infinite; animation-delay: var(--dl, 0s); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ra-part { transition: none; transform: none; }
+  .ra-ground, .ra-spin, .ra-speed, .ra-shuttle, .ra-wheel-shuttle, .ra-ping,
+  .ra-gear-cw, .ra-gear-ccw, .ra-twinkle, .ra-bob, .ra-confetti { animation: none; }
+  .ra-confetti { display: none; }
+}
+
+/* ---- Circuits module 2: pressable button (see circuits-art.js) ---- */
+
+.bt-button { cursor: pointer; outline: none; touch-action: manipulation; }
+.bt-button:focus-visible .bt-btn-img { filter: drop-shadow(0 0 3px var(--accent)); }
+
+.bt-btn-img { transition: transform 0.08s ease, filter 0.08s ease; }
+.is-pressed .bt-btn-img { transform: translateY(2px); filter: brightness(0.9); }
+
+.bt-led { filter: grayscale(0.75) brightness(1.2); opacity: 0.8; transition: filter 0.12s ease, opacity 0.12s ease; }
+.bt-halo { opacity: 0; transition: opacity 0.12s ease; }
+.is-pressed .bt-led { filter: none; opacity: 1; }
+.is-pressed .bt-halo { opacity: 1; }
+
+@keyframes bt-flow { to { stroke-dashoffset: -7; } }
+.is-pressed .bt-wire { stroke: #e0483a; animation: bt-flow 0.5s linear infinite; }
+
+@keyframes bt-hint { 0%, 100% { opacity: 0.3; transform: translateY(0); } 50% { opacity: 1; transform: translateY(4px); } }
+.bt-hint { animation: bt-hint 1.4s ease-in-out infinite; }
+.has-pressed .bt-hint { animation: none; opacity: 0.4; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bt-hint, .is-pressed .bt-wire { animation: none; }
+}
+
+.bt-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+
+/* ---- Theme switch (top right of the navbar) ---- */
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.lbl-box { display: none; }
+
+.theme-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 58px;
+  height: 28px;
+  padding: 0 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { border-color: var(--accent); }
+.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.tt-knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--text);
+  transition: transform 0.2s ease;
+}
+
+.tt-icon { position: relative; z-index: 1; display: inline-flex; }
+.tt-icon svg { width: 15px; height: 15px; display: block; }
+
+html:not([data-theme="box"]) .tt-sun { color: var(--bg); }
+html[data-theme="box"] .tt-knob { transform: translateX(30px); }
+html[data-theme="box"] .tt-box { color: #3a2a1b; }
+
+/* ---- Box mode: the dim inside of a cardboard box ---- */
+
+html[data-theme="box"] {
+  color-scheme: dark;
+  --bg: #17110d;
+  --bg-card: #7d5f3d;
+  --text: #f7f1e6;
+  --text-dim: #e0d1ba;
+  --text-faint: #b09b82;
+  --accent: #e0a964;
+  --accent-soft: rgba(224, 169, 100, 0.2);
+  --border: #6d5238;
+  --board: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0 2px, rgba(255, 255, 255, 0.035) 2px 5px);
+  /* a lamp glowing from above, darkening toward the corners */
+  background:
+    radial-gradient(ellipse 70% 50% at 50% -8%, rgba(120, 84, 52, 0.55) 0%, rgba(120, 84, 52, 0) 70%),
+    radial-gradient(ellipse at 50% 45%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.6) 100%),
+    #1b140f;
+  background-attachment: fixed;
+}
+
+html[data-theme="box"] body { background: transparent; }
+
+/* cardboard surfaces */
+html[data-theme="box"] .card,
+html[data-theme="box"] .camp-card,
+html[data-theme="box"] .curriculum-box,
+html[data-theme="box"] .quote-box,
+html[data-theme="box"] .placeholder,
+html[data-theme="box"] .btn.secondary,
+html[data-theme="box"] .contact-list a {
+  background: var(--board), var(--bg-card);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+}
+
+html[data-theme="box"] .btn.primary { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.45); }
+
+/* chalkboard navbar: no fill, a cardboard cutout behind the current page */
+html[data-theme="box"] nav {
+  background: rgba(23, 17, 13, 0.92);
+  backdrop-filter: blur(3px);
+  border-bottom: 1px dashed rgba(247, 241, 230, 0.2);
+}
+
+html[data-theme="box"] .nav-inner {
+  font-family: 'Schoolbell', cursive;
+  font-size: 1.1rem;
+}
+
+html[data-theme="box"] .nav-inner .brand {
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+html[data-theme="box"] .nav-links a {
+  position: relative;
+  isolation: isolate;
+  padding: 5px 15px;
+  color: rgba(247, 241, 230, 0.72);
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+html[data-theme="box"] .nav-links a:hover { color: #fff; }
+
+html[data-theme="box"] .nav-links a.active {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.55));
+}
+
+html[data-theme="box"] .nav-links a.active::before {
+  content: "";
+  position: absolute;
+  inset: -1px -2px;
+  z-index: -1;
+  background: var(--board), #a07848;
+  transform: rotate(-1.2deg);
+  clip-path: polygon(1% 18%, 9% 4%, 26% 9%, 47% 0%, 71% 8%, 90% 2%, 100% 16%, 97% 44%, 100% 72%, 91% 96%, 68% 90%, 44% 100%, 20% 92%, 6% 99%, 0% 70%, 3% 42%);
+}
+
+html[data-theme="box"] .theme-toggle { background: var(--board), #6a4f33; border-color: #8a6a45; }
+
+/* sidebar */
+html[data-theme="box"] .lbl-light { display: none; }
+html[data-theme="box"] .lbl-box { display: inline; }
+
+/* drawings are dark-on-light, so pin them to a sheet of paper */
+html[data-theme="box"] .module-art {
+  background: #efe3cc;
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="box"] .bt-wire { stroke: #eadcc3; }
+html[data-theme="box"] .is-pressed .bt-wire { stroke: #ff8a6a; }
+
+/* hard-coded badge colors, retuned for dark */
+html[data-theme="box"] .tag-pdf,
+html[data-theme="box"] .tag-docx,
+html[data-theme="box"] .tag-odt { background: #4b3827; color: #f1d3a8; }
+html[data-theme="box"] .tag-slides { background: #5a4716; color: #ffd86b; }
+html[data-theme="box"] .tag-pptx,
+html[data-theme="box"] .tag-odp { background: #5c3a1a; color: #ffb066; }
+html[data-theme="box"] .tag-time { background: #2f4a33; color: #b8e6b9; }
+
+html[data-theme="box"] .resource-count { color: #f1d3a8; border-color: rgba(247, 241, 230, 0.28); background: rgba(0, 0, 0, 0.3); }
+html[data-theme="box"] .resource-count.count-slides { color: #ffd86b; border-color: #8a6f2a; background: #5a4716; }
+html[data-theme="box"] .resource-count.count-pptx { color: #ffb066; border-color: #94602b; background: #5c3a1a; }
+
+html[data-theme="box"] .module-badge:hover { background: #9a7a52; }
+html[data-theme="box"] .module-badge:active { background: #5e4630; }

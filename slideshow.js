@@ -9,6 +9,11 @@
 // Every image is preloaded up front. The slideshow starts on whichever image
 // finishes loading first, and only ever advances to images that are already
 // loaded, so a slow image never leaves the previous one stuck on screen.
+//
+// By default each image fades out to nothing and then the next fades in. Pass
+// { crossfade: true } as a 4th argument to fade the next image in over the
+// current one instead, with no blank moment in between. In that mode the first
+// image also appears instantly (no fade-in) as soon as it has loaded.
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -18,17 +23,26 @@ function shuffle(array) {
   return array;
 }
 
-function renderSlideshow(elId, images, intervalMs) {
+function renderSlideshow(elId, images, intervalMs, options) {
   var el = document.getElementById(elId);
   if (!el || !images || !images.length) return;
   images = shuffle(images.slice());
   intervalMs = intervalMs || 5000;
-  var fadeMs = 600;
+  var crossfade = !!(options && options.crossfade);
+  var fadeMs = crossfade ? 1000 : 600;
+  var transition = "opacity " + fadeMs / 1000 + "s ease";
 
-  var img = document.createElement("img");
-  img.alt = "";
-  img.style.opacity = "0";
-  el.appendChild(img);
+  function makeLayer() {
+    var layer = document.createElement("img");
+    layer.alt = "";
+    layer.style.opacity = "0";
+    layer.style.transition = transition;
+    el.appendChild(layer);
+    return layer;
+  }
+
+  var img = makeLayer();
+  var back = crossfade ? makeLayer() : null;
 
   var loaded = [];
   var current = -1;
@@ -42,15 +56,46 @@ function renderSlideshow(elId, images, intervalMs) {
     return current;
   }
 
-  function show(k) {
+  function show(k, instant) {
     current = k;
     img.src = images[k];
-    img.style.opacity = "1";
+    if (instant) {
+      img.style.transition = "none";
+      img.style.opacity = "1";
+      void img.offsetWidth;
+      img.style.transition = transition;
+    } else {
+      img.style.opacity = "1";
+    }
+  }
+
+  // Fades the next image in on top of the current one, then clears the old
+  // layer so the two never dip through the background mid-fade.
+  function crossfadeTo(k) {
+    var outgoing = img;
+    var incoming = back;
+    current = k;
+    incoming.style.zIndex = "2";
+    outgoing.style.zIndex = "1";
+    incoming.src = images[k];
+    incoming.style.opacity = "1";
+    img = incoming;
+    back = outgoing;
+    setTimeout(function () {
+      outgoing.style.transition = "none";
+      outgoing.style.opacity = "0";
+      void outgoing.offsetWidth;
+      outgoing.style.transition = transition;
+    }, fadeMs);
   }
 
   function advance() {
     var k = nextLoadedIndex();
     if (k === current) return;
+    if (crossfade) {
+      crossfadeTo(k);
+      return;
+    }
     img.style.opacity = "0";
     setTimeout(function () {
       show(k);
@@ -60,7 +105,7 @@ function renderSlideshow(elId, images, intervalMs) {
   function start(k) {
     if (started) return;
     started = true;
-    show(k);
+    show(k, crossfade);
     if (images.length > 1) setInterval(advance, intervalMs);
   }
 

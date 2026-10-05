@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Circuits Camp — Neil Thella</title>
   <meta name="description" content="Circuits Camp: a hands-on curriculum in electronics and physics for aspiring engineers.">
-  <style>html { background: #f9f7f4; }</style>
+  <script src="theme.js"></script>
+  <style>html { background: #f9f7f4; } html[data-theme="box"] { background: #17110d; }</style>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <script src="nav.js"></script>
 
-  <main>
+  <main class="with-sidebar">
+    <aside class="page-sidebar" id="page-sidebar"></aside>
+    <div class="page-content">
     <div class="hero"> <!-- add hero split class when images are ready-->
       <div class="hero-text">
         <div class="kicker">For Abstract thinking with tangible results</div>
@@ -40,21 +43,7 @@
 
     <hr class="divider">
 
-    <section id="requirements">
-      <h2>What You'll Need</h2>
-      <p class="section-sub">logistics for running this camp</p>
-      <div class="card">
-        <ul class="requirements-list">
-          <li>1 ESP32 kit &amp; laptop for every 2&ndash;3 students</li>
-          <li>venue with Wi-Fi, a big screen, and tables</li>
-          <li>recommended 8&ndash;12 students per instructor/assistant</li>
-        </ul>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <section id="story">
+    <section id="story" data-sidebar="Introduction">
       <h2 class="hand">electronics to solve real problems</h2>
       <div class="note-grid">
         <div>
@@ -75,7 +64,21 @@
 
     <hr class="divider">
 
-    <section id="modules">
+    <section id="requirements" data-sidebar="Required Resources">
+      <h2>What You'll Need</h2>
+      <p class="section-sub">logistics for running this camp</p>
+      <div class="card">
+        <ul class="requirements-list">
+          <li>1 ESP32 kit &amp; laptop for every 2&ndash;3 students</li>
+          <li>venue with Wi-Fi, a big screen, and tables</li>
+          <li>recommended 8&ndash;12 students per instructor/assistant</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="modules" data-sidebar="Modules">
       <h2>Modules</h2>
       <p class="section-sub">This works nicely as a week-long camp, but can also be a workshop with 3-6 recurring sessions.</p>
       <ol class="module-list">
@@ -84,37 +87,52 @@
           <h3>Introduction &amp; Orientation</h3>
           <p>Kickoff: What is STEM? What is a circuit? Introduce the roadmap along with your instructors and host organization.</p>
         </li>
-        <li data-label="1">
+        <li data-label="1" class="has-art">
           <a class="module-badge" href="#materials" data-day="1">1</a>
-          <h3>Power in Circuits, Coding Output</h3>
-          <p>Introduction to electricity flow & grounding, and controlling them with GPIO pins.</p>
+          <div class="module-art" data-art="led"></div>
+          <div class="module-text">
+            <h3>Power in Circuits, Coding Output</h3>
+            <p>Introduction to electricity flow & grounding, and controlling them with GPIO pins.</p>
+          </div>
         </li>
-        <li data-label="2">
+        <li data-label="2" class="has-art">
           <a class="module-badge" href="#materials" data-day="2">2</a>
-          <h3>Using Manual I/O to Power the Circuit</h3>
-          <p>Input Introduction: How interruptions to current can be read to trigger other events.</p>
+          <div class="module-art" data-art="button"></div>
+          <div class="module-text">
+            <h3>Using Manual I/O to Power the Circuit</h3>
+            <p>Input Introduction: How interruptions to current can be read to trigger other events.</p>
+          </div>
         </li>
-        <li data-label="3">
+        <li data-label="3" class="has-art">
           <a class="module-badge" href="#materials" data-day="3">3</a>
-          <h3>Using Sensors and Making Interpretations</h3>
-          <p>Input Applications: Using other sensors (temperature, humidity, soil, pressure) and linking them with responses.</p>
+          <img class="module-art" src="images/circuits-module-3.png" alt="" loading="lazy">
+          <div class="module-text">
+            <h3>Using Sensors and Making Interpretations</h3>
+            <p>Input Applications: Using other sensors (temperature, humidity, soil, pressure) and linking them with responses.</p>
+          </div>
         </li>
-        <li data-label="4">
+        <li data-label="4" class="has-art">
           <a class="module-badge" href="#materials" data-day="4">4</a>
-          <h3>How the ESP32 Is Used in the Real World</h3>
-          <p>Brainstorm ideas so the ESP32 and provided sensors can act as a prototype for a solution to a real-world problem.</p>
+          <img class="module-art" src="images/circuits-module-4.png" alt="" loading="lazy">
+          <div class="module-text">
+            <h3>How the ESP32 Is Used in the Real World</h3>
+            <p>Brainstorm ideas so the ESP32 and provided sensors can act as a prototype for a solution to a real-world problem.</p>
+          </div>
         </li>
-        <li data-label="5">
+        <li data-label="5" class="has-art">
           <a class="module-badge" href="#materials" data-day="5">5</a>
-          <h3>How We Can Share and Present New Innovations</h3>
-          <p>Apply presentation skills, which are growing increasingly important, to present prototypes to parents and a judge panel.</p>
+          <img class="module-art" src="images/circuits-module-5.png" alt="" loading="lazy">
+          <div class="module-text">
+            <h3>How We Can Share and Present New Innovations</h3>
+            <p>Apply presentation skills, which are growing increasingly important, to present prototypes to parents and a judge panel.</p>
+          </div>
         </li>
       </ol>
     </section>
 
     <hr class="divider">
 
-    <section id="impact">
+    <section id="impact" data-sidebar="Impact">
       <h2>Impact</h2>
       <div class="grid">
         <!-- DISCLAIMER: I am currently working on getting more accurate number estimates based on our rosters and past camp records. -->
@@ -133,7 +151,7 @@
       </div>
     </section>
 
-    <section id="materials">
+    <section id="materials" data-sidebar="Materials">
       <h2>Materials</h2>
       <p class="section-sub">IN PROGRESS: I'm currently working on formatting the Circuits Camp resources to serve your workshop well! For now, check out the <a href="robotics-camp.html">Robotics Camp</a>!</p>
       <div class="curriculum-box" id="circuits-curriculum"></div>
@@ -149,6 +167,7 @@
         { label: "5", title: "How We Can Share and Present New Innovations", resources: [] },
       ]);
     </script> -->
+    </div>
   </main>
 
   <script src="slideshow.js"></script>
@@ -158,9 +177,11 @@
       "images/history-placeholder-1.svg",
       "images/history-placeholder-2.svg",
       "images/history-placeholder-3.svg",
-    ], 5000);
+    ], 5000, { crossfade: true });
   </script>
 
+  <script src="circuits-art.js"></script>
+  <script src="sidebar.js"></script>
   <script src="footer.js"></script>
 </body>
 </html>

@@ -7,13 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Robotics Camp — Neil Thella</title>
   <meta name="description" content="Robotics Camp: a hands-on curriculum in sensors, motors, and algorithmic thinking for aspiring engineers.">
-  <style>html { background: #f9f7f4; }</style>
+  <script src="theme.js"></script>
+  <style>html { background: #f9f7f4; } html[data-theme="box"] { background: #17110d; }</style>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <script src="nav.js"></script>
 
-  <main>
+  <main class="with-sidebar">
+    <aside class="page-sidebar" id="page-sidebar"></aside>
+    <div class="page-content">
     <div class="hero hero-split">
       <div class="hero-text">
         <div class="kicker">For Software & Hardware Balance</div>
@@ -39,7 +42,7 @@
 
     <hr class="divider">
 
-    <section id="story">
+    <section id="story" data-sidebar="Introduction">
       <h2 class="hand">an immersive, hands-on experience</h2>
       <div class="note-grid">
         <div>
@@ -63,7 +66,7 @@
 
     <hr class="divider">
 
-    <section id="requirements">
+    <section id="requirements" data-sidebar="Required Resources">
       <h2>What You'll Need</h2>
       <div class="card">
         <ul class="requirements-list">
@@ -78,7 +81,7 @@
 
     <hr class="divider">
 
-    <section id="modules">
+    <section id="modules" data-sidebar="Modules">
       <h2>Modules</h2>
       <p class="section-sub">This camp/workshop can span from 5-10 sessions (typically 1.75-2.5 hours per session), and the modules are designed flexibly as such:</p>
       <ol class="module-list">
@@ -89,35 +92,50 @@
         </li>
         <li data-label="1">
           <a class="module-badge" href="#materials" data-day="1">1</a>
-          <h3>How to Build</h3>
-          <p><span class="tag tag-time">1 session</span> Conceptualize the functions of different parts to students and offer instruction in building a robot.</p>
+          <div class="module-art" hidden data-art="assemble" aria-hidden="true"></div>
+          <div class="module-text">
+            <h3>How to Build</h3>
+            <p><span class="tag tag-time">1 session</span> Conceptualize the functions of different parts to students and offer instruction in building a robot.</p>
+          </div>
         </li>
         <li data-label="2">
           <a class="module-badge" href="#materials" data-day="2">2</a>
-          <h3>Getting in Motion</h3>
-          <p><span class="tag tag-time">1-2 sessions</span> Introduce coding to students as they begin making their robot move and building basic attachments for missions.</p>
+          <div class="module-art" hidden data-art="drive" aria-hidden="true"></div>
+          <div class="module-text">
+            <h3>Getting in Motion</h3>
+            <p><span class="tag tag-time">1-2 sessions</span> Introduce coding to students as they begin making their robot move and building basic attachments for missions.</p>
+          </div>
         </li>
         <li data-label="3">
           <a class="module-badge" href="#materials" data-day="3">3</a>
-          <h3>Sensing the World</h3>
-          <p><span class="tag tag-time">½-1 session</span> Illustrate how the robot has sensing capabilites and guide students through challenges involving booleans and control lines.</p>
+          <div class="module-art" hidden data-art="sense" aria-hidden="true"></div>
+          <div class="module-text">
+            <h3>Sensing the World</h3>
+            <p><span class="tag tag-time">½-1 session</span> Illustrate how the robot has sensing capabilites and guide students through challenges involving booleans and control lines.</p>
+          </div>
         </li>
         <li data-label="4">
           <a class="module-badge" href="#materials" data-day="4">4</a>
-          <h3>Competition Prep</h3>
-          <p><span class="tag tag-time">2-6 sessions</span> Mentor students in their preparation for a mock-tournament with the official missions on your robot table.</p>
+          <div class="module-art" hidden data-art="gears" aria-hidden="true"></div>
+          <div class="module-text">
+            <h3>Competition Prep</h3>
+            <p><span class="tag tag-time">2-6 sessions</span> Mentor students in their preparation for a mock-tournament with the official missions on your robot table.</p>
+          </div>
         </li>
         <li data-label="F">
           <a class="module-badge" href="#materials" data-day="F">F</a>
-          <h3>Showcase & Awards</h3>
-          <p><span class="tag tag-time">1 session</span> Invite parents to see the final tournament and provide next steps on robotics involvement.</p>
+          <div class="module-art" hidden data-art="trophy" aria-hidden="true"></div>
+          <div class="module-text">
+            <h3>Showcase & Awards</h3>
+            <p><span class="tag tag-time">1 session</span> Invite parents to see the final tournament and provide next steps on robotics involvement.</p>
+          </div>
         </li>
       </ol>
     </section>
 
     <hr class="divider">
 
-    <section id="impact">
+    <section id="impact" data-sidebar="Impact">
       <h2>These materials are based on...</h2>
       <p class="section-sub">150 students who have went through the entire curriculum!</p>
       <!-- DISCLAIMER: I am currently working on getting more accurate number estimates based on our rosters and past camp records. -->
@@ -141,7 +159,7 @@
       </div>
     </section>
 
-    <section id="materials">
+    <section id="materials" data-sidebar="Materials">
       <h2>Materials</h2>
       <p class="section-sub">Now it's your turn. While I've formatted these as if they constitute a structured course, there will always be unexpected real-world challenges in implementation. Fulfillment lies in reaching the final outcome despite setbacks, trust the process!</p>
       <div class="curriculum-box" id="robotics-curriculum"></div>
@@ -324,6 +342,7 @@
         ] },
       ], { scroll: true });
     </script>
+    </div>
   </main>
 
   <script src="slideshow.js"></script>
@@ -332,9 +351,13 @@
       "https://lh3.googleusercontent.com/d/1wBi3aAxLS7y94qWK7o7KpjK_zeV6WkUX",
       "https://lh3.googleusercontent.com/d/1KDGIVb1zr77JBY3Uqdyidx0mnnxxNlLp",
       "https://lh3.googleusercontent.com/d/126DJ-7XfzREpyXb7cQnVb7YLfuZmwMWq",
-    ], 20000);
+    ], 20000, { crossfade: true });
   </script>
 
+  <!-- Module illustrations are hidden for now. To bring them back: restore class="has-art" on the module <li>s, remove "hidden" from the .module-art divs, and uncomment this script.
+  <script src="robot-art.js"></script>
+  -->
+  <script src="sidebar.js"></script>
   <script src="footer.js"></script>
 </body>
 </html>
