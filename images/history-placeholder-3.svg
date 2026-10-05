@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <rect width="400" height="500" fill="#fdfbf5"/>
+  <rect width="400" height="500" fill="none" stroke="#ddd3bd" stroke-width="2"/>
+  <text x="200" y="250" font-family="monospace" font-size="20" fill="#241f1a" text-anchor="middle">Photo 3</text>
+  <text x="200" y="280" font-family="monospace" font-size="13" fill="#8a8272" text-anchor="middle">replace with a real image</text>
+</svg>

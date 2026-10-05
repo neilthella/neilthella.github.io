@@ -1,0 +1,166 @@
+<!-- DISCLOSURE: AI was used in developing this website, however NO AI was used in the materials. The materials are human-made from trial and error after years of running camps and workshops. -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuits Camp — Neil Thella</title>
+  <meta name="description" content="Circuits Camp: a hands-on curriculum in electronics and physics for aspiring engineers.">
+  <style>html { background: #f9f7f4; }</style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script src="nav.js"></script>
+
+  <main>
+    <div class="hero"> <!-- add hero split class when images are ready-->
+      <div class="hero-text">
+        <div class="kicker">For Abstract thinking with tangible results</div>
+        <h1>Circuits Camp</h1>
+        <p class="tagline">Where the teams with substantial technical rigor must also pitch their idea persuasively.</p>
+        <p class="subline">in-person workshop &middot; no experience required</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#modules">See the modules</a>
+          <a class="btn secondary" href="#materials">Get the materials</a>
+        </div>
+      </div>
+      <!-- <div class="slideshow-box" id="circuits-slideshow"></div> -->
+    </div>
+
+    <section class="abstract">
+      <p><span class="label">Let's build (a prototype)!</span>
+        In this program, students work together to learn and apply the fundamentals of the
+        ESP32. Instructors will teach them the core concepts, but they are encouraged to exercise
+        their own critical thinking skills in applying them and solving problems. In the end,
+        they construct and present a prototype to address a real-world problem, and you can run
+        an awards ceremony based on their solutions!
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <section id="requirements">
+      <h2>What You'll Need</h2>
+      <p class="section-sub">logistics for running this camp</p>
+      <div class="card">
+        <ul class="requirements-list">
+          <li>1 ESP32 kit &amp; laptop for every 2&ndash;3 students</li>
+          <li>venue with Wi-Fi, a big screen, and tables</li>
+          <li>recommended 8&ndash;12 students per instructor/assistant</li>
+        </ul>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="story">
+      <h2 class="hand">technology to solve real problems</h2>
+      <div class="note-grid">
+        <div>
+          <p>
+            <!-- PLACEHOLDER — replace with your real backstory -->
+            It turns out people are willing to sit at a table with a circuit for hours a day if they feel and embrace the challenge. This one turned out to be much more expansive than I anticipated!
+          </p>
+          <p>
+            I think this one is better for actual career-prep. The presentation at the end means your participants need to pitch their ideas, like they would in an actual job.
+          </p>
+        </div>
+        <div class="quote-box">
+          <!-- PLACEHOLDER — swap in a real quote -->
+          "When I started my first workshop I never imagined how many young minds it would go on to inspire."
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="modules">
+      <h2>Modules</h2>
+      <p class="section-sub">This works nicely as a week-long camp, but can also be a workshop with 3-6 recurring sessions.</p>
+      <ol class="module-list">
+        <li data-label="P">
+          <a class="module-badge" href="#materials" data-day="P">P</a>
+          <h3>Introduction &amp; Orientation</h3>
+          <p>Kickoff: What is STEM? What is a circuit? Introduce the roadmap along with your instructors and host organization.</p>
+        </li>
+        <li data-label="1">
+          <a class="module-badge" href="#materials" data-day="1">1</a>
+          <h3>Power in Circuits, Coding Output</h3>
+          <p>Introduction to electricity flow & grounding, and controlling them with GPIO pins.</p>
+        </li>
+        <li data-label="2">
+          <a class="module-badge" href="#materials" data-day="2">2</a>
+          <h3>Using Manual I/O to Power the Circuit</h3>
+          <p>Input Introduction: How interruptions to current can be read to trigger other events.</p>
+        </li>
+        <li data-label="3">
+          <a class="module-badge" href="#materials" data-day="3">3</a>
+          <h3>Using Sensors and Making Interpretations</h3>
+          <p>Input Applications: Using other sensors (temperature, humidity, soil, pressure) and linking them with responses.</p>
+        </li>
+        <li data-label="4">
+          <a class="module-badge" href="#materials" data-day="4">4</a>
+          <h3>How the ESP32 Is Used in the Real World</h3>
+          <p>Brainstorm ideas so the ESP32 and provided sensors can act as a prototype for a solution to a real-world problem.</p>
+        </li>
+        <li data-label="5">
+          <a class="module-badge" href="#materials" data-day="5">5</a>
+          <h3>How We Can Share and Present New Innovations</h3>
+          <p>Apply presentation skills, which are growing increasingly important, to present prototypes to parents and a judge panel.</p>
+        </li>
+      </ol>
+    </section>
+
+    <hr class="divider">
+
+    <section id="impact">
+      <h2>Impact</h2>
+      <div class="grid">
+        <!-- DISCLAIMER: I am currently working on getting more accurate number estimates based on our rosters and past camp records. -->
+        <div class="card stat-card">
+          <div class="stat-number">>50</div>
+          <div class="stat-label">student participants</div>
+        </div>
+        <div class="card stat-card">
+          <div class="stat-number">18</div>
+          <div class="stat-label">hours of workshops</div>
+        </div>
+        <div class="card">
+          <h3>Meets Industry Trends</h3>
+          <p class="meta">Students are rewarded for having strong technical abilities and packaging their product into a professional presentation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="materials">
+      <h2>Materials</h2>
+      <p class="section-sub">IN PROGRESS: I'm currently working on formatting the Circuits Camp resources to serve your workshop well! For now, check out the <a href="robotics-camp.html">Robotics Camp</a>!</p>
+      <div class="curriculum-box" id="circuits-curriculum"></div>
+    </section>
+    <script src="curriculum.js"></script>
+    <!-- <script>
+      renderCurriculumNav("circuits-curriculum", [
+        { label: "P", title: "Introduction & Orientation", resources: [] },
+        { label: "1", title: "Power in Circuits, Coding Output", resources: [] },
+        { label: "2", title: "Using Manual I/O to Power the Circuit", resources: [] },
+        { label: "3", title: "Using Sensors and Making Interpretations", resources: [] },
+        { label: "4", title: "How the ESP32 Is Used in the Real World", resources: [] },
+        { label: "5", title: "How We Can Share and Present New Innovations", resources: [] },
+      ]);
+    </script> -->
+  </main>
+
+  <script src="slideshow.js"></script>
+  <script>
+    // Replace these placeholders with your own photos (paths or URLs).
+    renderSlideshow("circuits-slideshow", [
+      "images/history-placeholder-1.svg",
+      "images/history-placeholder-2.svg",
+      "images/history-placeholder-3.svg",
+    ], 5000);
+  </script>
+
+  <script src="footer.js"></script>
+</body>
+</html>
