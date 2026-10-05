@@ -7,8 +7,8 @@
   --bg: #f6f5f3;
   --bg-card: #fdfbf5;
   --text: #000;
-  --text-dim: #756e60;
-  --text-faint: #b3a992;
+  --text-dim: #4e575f;
+  --text-faint: #92a6b3;
   --accent: #2748c4;
   --accent-soft: #eef0fa;
   --border: #ddd3bd;
@@ -32,7 +32,7 @@
   --radius: 8px;
   --max-width: 960px;
   --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-  /* --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace; */
+  --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   --mono: "Open Sans", sans-serif, serif;
   --hand: 'Caveat', cursive;
 } */
@@ -414,7 +414,7 @@ section .section-sub {
 
 .tag-time {
   background: #e3f3e6;
-  color: #2f6b3d;
+  color: #2f546b;
 }
 
 .tag-pptx,
